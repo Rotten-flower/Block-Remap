@@ -1,0 +1,76 @@
+plugins {
+    id "fabric-loom" version "1.8.13"
+}
+
+version = project.mod_version
+group = "dev.luohua.blockgenban"
+base { archivesName = "block-remap-fabric-1.20.1" }
+
+repositories { mavenCentral() }
+
+sourceSets {
+    serverTest {
+        java.srcDir '../../tests/server'
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+    }
+    uiTest {
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+    }
+}
+configurations { uiTestImplementation.extendsFrom implementation }
+
+dependencies {
+    minecraft "com.mojang:minecraft:${minecraft_version}"
+    mappings loom.officialMojangMappings()
+    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
+    include(modImplementation("io.github.llamalad7:mixinextras-fabric:0.4.1"))
+}
+
+loom {
+    mods {
+        blockgen_ban { sourceSet sourceSets.main }
+        if (project.hasProperty('uiTest')) { blockgen_ban_test { sourceSet sourceSets.uiTest } }
+        if (project.hasProperty('serverTest')) { blockgen_ban_server_test { sourceSet sourceSets.serverTest } }
+    }
+    runs {
+        client { client() }
+        server { server() }
+        if (project.hasProperty('serverTest')) {
+            probeServer {
+                server()
+                source sourceSets.serverTest
+                runDir '../../工作/2026-11-04-multiversion-1.0/fabric-server'
+                vmArg '-Dblockgenban.probe.phase=' + (project.findProperty('probePhase') ?: 'prepare')
+            }
+        }
+        if (project.hasProperty('uiTest')) {
+            uiClient {
+                client()
+                source sourceSets.uiTest
+                runDir '../../工作/2026-11-04-multiversion-1.0/fabric-client'
+                vmArg '-Dblockgenban.ui.output=' + project.file('../../验证/fabric-1.20.1-1.0.0').absolutePath
+                programArgs '--width', '1280', '--height', '720'
+            }
+        }
+    }
+    mixin { defaultRefmapName = "blockgen_ban.refmap.json" }
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
+    withSourcesJar()
+}
+
+tasks.withType(JavaCompile).configureEach { options.encoding = "UTF-8" }
+tasks.named("processResources").configure {
+    from(rootProject.file('../../art/icon.png'))
+    inputs.property "version", project.version
+    filesMatching("fabric.mod.json") { expand version: project.version }
+}
+jar {
+    manifest.attributes("MixinConfigs": "blockgen_ban.mixins.json")
+}
+tasks.withType(Jar).configureEach { from(rootProject.files('../../LICENSE', '../../LICENSE-ASSETS.md', '../../THIRD_PARTY.md')) }

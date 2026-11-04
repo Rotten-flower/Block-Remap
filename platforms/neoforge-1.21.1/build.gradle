@@ -1,0 +1,55 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.148'
+}
+version = mod_version
+group = 'dev.luohua.blockgenban'
+base { archivesName = 'block-remap-neoforge-1.21.1' }
+java { toolchain.languageVersion = JavaLanguageVersion.of(21); withSourcesJar() }
+sourceSets {
+    serverTest {
+        java.srcDir '../../tests/server'
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+    }
+    uiTest {
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+    }
+}
+neoForge {
+    version = neoforge_version
+    runs {
+        client {
+            client()
+            gameDirectory = project.file('../../工作/2026-11-04-multiversion-1.0/neo-client')
+            programArguments.addAll '--width', '1280', '--height', '720'
+            if (project.hasProperty('uiTest')) {
+                systemProperty 'blockgenban.ui.output', project.file('../../验证/neoforge-1.21.1-1.0.0').absolutePath
+            }
+        }
+        server { server(); programArgument '--nogui' }
+        if (project.hasProperty('serverTest')) {
+            probeServer {
+                server()
+                sourceSet = sourceSets.serverTest
+                gameDirectory = project.file('../../工作/2026-11-04-multiversion-1.0/neo-server')
+                programArgument '--nogui'
+                systemProperty 'blockgenban.probe.phase', project.findProperty('probePhase') ?: 'prepare'
+            }
+        }
+    }
+    mods {
+        blockgen_ban { sourceSet sourceSets.main; if (project.hasProperty('uiTest')) sourceSet sourceSets.uiTest }
+        if (project.hasProperty('serverTest')) { blockgen_ban_server_test { sourceSet sourceSets.serverTest } }
+    }
+}
+repositories { mavenCentral() }
+dependencies { compileOnly 'io.github.llamalad7:mixinextras-common:0.5.5' }
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+tasks.named('processResources', ProcessResources).configure {
+    from(rootProject.file('../../art/icon.png'))
+    inputs.property 'version', project.version
+    filesMatching('META-INF/neoforge.mods.toml') { expand version: project.version }
+}
+tasks.withType(Jar).configureEach { from(rootProject.files('../../LICENSE', '../../LICENSE-ASSETS.md', '../../THIRD_PARTY.md')) }

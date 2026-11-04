@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.luohua.blockgenban.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "blockgen_ban.refmap.json",
+  "mixins": ["BlockTargetMixin","ChunkOwnershipMixin","ProtoChunkMixin","WorldGenRegionMixin","SectionMixin","NoiseGeneratorMixin","LevelMixin","LevelChunkMixin","BlockItemMixin","ChunkSerializerMixin","StructureMixin","ConfiguredFeatureMixin","PlacedFeatureMixin","ChunkGeneratorMixin"],
+  "injectors": {"defaultRequire": 1}
+}

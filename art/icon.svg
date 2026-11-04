@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#fff"/>
+  <g stroke="#344038" stroke-width="5" stroke-linejoin="round">
+    <path d="M38 210 118 164 198 210 118 256Z" fill="#83b45b"/>
+    <path d="M38 210 118 256 118 348 38 302Z" fill="#9a704f"/>
+    <path d="M118 256 198 210 198 302 118 348Z" fill="#76533e"/>
+    <path d="M38 210 118 256 118 277 97 265 97 273 75 260 75 248 57 238 57 243 38 232Z" fill="#699546" stroke="none"/>
+    <path d="M118 256 198 210 198 232 180 242 180 252 158 265 158 258 140 269 140 277 118 290Z" fill="#537b35" stroke="none"/>
+  </g>
+  <g fill="#b48a63">
+    <path d="M48 258 61 266 61 279 48 271Z"/><path d="M83 294 102 305 102 316 83 305Z"/>
+  </g>
+  <path d="M213 249H263V236L287 256 263 276V263H213Z" fill="#35414a"/>
+  <g stroke="#414a52" stroke-width="5" stroke-linejoin="round">
+    <path d="M314 210 394 164 474 210 394 256Z" fill="#d3d9de"/>
+    <path d="M314 210 394 256 394 348 314 302Z" fill="#a9b1b9"/>
+    <path d="M394 256 474 210 474 302 394 348Z" fill="#7f8a94"/>
+  </g>
+  <g fill="#bac2c9">
+    <path d="M328 242 349 254 349 269 328 257Z"/><path d="M359 286 380 298 380 313 359 301Z"/>
+    <path d="M414 265 437 252 437 267 414 280Z"/>
+  </g>
+  <g fill="#697680"><path d="M445 280 462 270 462 283 445 293Z"/></g>
+</svg>

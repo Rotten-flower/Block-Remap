@@ -1,0 +1,24 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="MIT"
+[[mods]]
+modId="blockgen_ban"
+version="${version}"
+displayName="Block Remap"
+authors="Rotten-flower"
+logoFile="icon.png"
+description='''Configurable generation-only or global block replacement. Preserves inventory items. Includes structure and feature bans.'''
+[[mixins]]
+config="blockgen_ban.mixins.json"
+[[dependencies.blockgen_ban]]
+modId="neoforge"
+type="required"
+versionRange="[21.1.265,)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.blockgen_ban]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.1,1.21.2)"
+ordering="NONE"
+side="BOTH"

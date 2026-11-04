@@ -1,0 +1,22 @@
+name: Bug report / 问题反馈
+description: Report a reproducible problem / 反馈可复现的问题
+body:
+  - type: input
+    id: versions
+    attributes:
+      label: Versions / 版本
+      description: Minecraft, loader and Block Remap versions / Minecraft、加载器与模组版本
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps and result / 复现步骤与结果
+      description: Include the replacement mode, relevant rules and expected result. / 附替换模式、有关规则与预期结果。
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs and other mods / 日志与其他模组
+      description: Attach relevant logs or a paste link. Remove private server addresses and personal information. / 附相关日志或链接，移除私人服务器地址与个人信息。

@@ -1,0 +1,7 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+[[mods]]
+modId="blockgen_ban_verification"
+version="1.0"
+displayName="Blockgen Ban Acceptance Fixture"

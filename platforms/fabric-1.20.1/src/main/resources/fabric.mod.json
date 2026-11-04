@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "blockgen_ban",
+  "version": "${version}",
+  "name": "Block Remap",
+  "icon": "icon.png",
+  "description": "Configurable generation-only or global block replacement. Preserves inventory items. Includes structure and feature bans.",
+  "authors": [
+    "Rotten-flower"
+  ],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.luohua.blockgenban.BlockgenBan"
+    ],
+    "client": [
+      "dev.luohua.blockgenban.client.ClientRegistration"
+    ]
+  },
+  "mixins": [
+    "blockgen_ban.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.14",
+    "minecraft": "~1.20.1",
+    "java": ">=17",
+    "fabric-api": "*"
+  }
+}
