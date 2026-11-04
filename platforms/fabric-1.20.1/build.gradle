@@ -42,7 +42,7 @@ loom {
             probeServer {
                 server()
                 source sourceSets.serverTest
-                runDir '../../工作/2026-11-04-multiversion-1.0/fabric-server'
+                runDir 'run/probe-server'
                 vmArg '-Dblockgenban.probe.phase=' + (project.findProperty('probePhase') ?: 'prepare')
             }
         }
@@ -50,8 +50,8 @@ loom {
             uiClient {
                 client()
                 source sourceSets.uiTest
-                runDir '../../工作/2026-11-04-multiversion-1.0/fabric-client'
-                vmArg '-Dblockgenban.ui.output=' + project.file('../../验证/fabric-1.20.1-1.0.0').absolutePath
+                runDir 'run/ui-client'
+                vmArg '-Dblockgenban.ui.output=' + project.file('build/reports/ui').absolutePath
                 programArgs '--width', '1280', '--height', '720'
             }
         }

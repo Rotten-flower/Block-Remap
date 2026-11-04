@@ -39,7 +39,7 @@ minecraft {
             args '--width', '1280', '--height', '720'
             jvmArgs '-Xmx3G'
             if (project.hasProperty('uiTest')) {
-                property 'blockgenban.ui.output', project.file(project.findProperty('acceptanceOutput') ?: 'work/ui/validation').absolutePath
+                property 'blockgenban.ui.output', project.file(project.findProperty('acceptanceOutput') ?: 'build/reports/ui').absolutePath
                 mods { blockgen_ban { source sourceSets.uiTest } }
                 property 'mixin.env.remapRefMap', 'true'
                 property 'mixin.env.refMapRemappingFile', project.file('build/createSrgToMcp/output.srg').absolutePath

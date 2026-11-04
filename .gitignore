@@ -17,3 +17,9 @@ release.json
 *.hprof
 .DS_Store
 Thumbs.db
+AGENTS.md
+docs/images/fabric-editor.png
+docs/images/fabric-ordering.png
+docs/images/forge-ordering.png
+docs/images/neo-editor.png
+docs/images/neo-ordering.png

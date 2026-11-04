@@ -22,10 +22,10 @@ neoForge {
     runs {
         client {
             client()
-            gameDirectory = project.file('../../工作/2026-11-04-multiversion-1.0/neo-client')
+            gameDirectory = project.file('run/client')
             programArguments.addAll '--width', '1280', '--height', '720'
             if (project.hasProperty('uiTest')) {
-                systemProperty 'blockgenban.ui.output', project.file('../../验证/neoforge-1.21.1-1.0.0').absolutePath
+                systemProperty 'blockgenban.ui.output', project.file('build/reports/ui').absolutePath
             }
         }
         server { server(); programArgument '--nogui' }
@@ -33,7 +33,7 @@ neoForge {
             probeServer {
                 server()
                 sourceSet = sourceSets.serverTest
-                gameDirectory = project.file('../../工作/2026-11-04-multiversion-1.0/neo-server')
+                gameDirectory = project.file('run/probe-server')
                 programArgument '--nogui'
                 systemProperty 'blockgenban.probe.phase', project.findProperty('probePhase') ?: 'prepare'
             }
