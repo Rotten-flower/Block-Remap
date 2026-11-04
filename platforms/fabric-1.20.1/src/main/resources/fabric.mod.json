@@ -12,10 +12,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "dev.luohua.blockgenban.BlockgenBan"
+      "dev.flower.blockgenban.BlockgenBan"
     ],
     "client": [
-      "dev.luohua.blockgenban.client.ClientRegistration"
+      "dev.flower.blockgenban.client.ClientRegistration"
     ]
   },
   "mixins": [

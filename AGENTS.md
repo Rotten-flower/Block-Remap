@@ -2,8 +2,8 @@
 
 - Read README.md, CHANGELOG.md and the affected platform's build files first. Only the three listed platforms are maintained. Keep version, names, descriptions and fixes in sync.
 - 先读 README.md、CHANGELOG.md 与受影响端的构建文件。只维护列明的三个端，同步版本、名称、功能与修复。
-- Preserve modid `blockgen_ban`, package, command `/blockgenban`, JSON keys and world SavedData identifiers. Released versions are immutable.
-- 保留 modid、包、命令、JSON 字段及世界快照标识。已发布的版本与产物不覆盖。
+- Author: `Rotten-flower`; Java package: `dev.flower.blockgenban`; GitHub owner: `Rotten-flower`. Preserve modid `blockgen_ban`, command `/blockgenban`, JSON keys and world SavedData identifiers. Released versions are immutable.
+- 作者署名 `Rotten-flower`，Java 包名 `dev.flower.blockgenban`，GitHub 账号 `Rotten-flower`。保留 modid、命令、JSON 字段及世界快照标识。已发布的版本与产物不覆盖。
 - `generation_only` preserves manual writes and old chunks. `global` also changes old palettes permanently. Inventory items remain unchanged in both modes.
 - 仅生成模式保留手动放置与旧区块。全局模式会永久改写命中的旧调色板，两种模式都保留背包物品。
 - Rules saved in the UI apply after reopening the world or restarting the server. Keep same-section palette-lock forwarding and nested worldgen scopes intact.

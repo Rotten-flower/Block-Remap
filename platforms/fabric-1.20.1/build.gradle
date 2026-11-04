@@ -3,7 +3,7 @@ plugins {
 }
 
 version = project.mod_version
-group = "dev.luohua.blockgenban"
+group = "dev.flower.blockgenban"
 base { archivesName = "block-remap-fabric-1.20.1" }
 
 repositories { mavenCentral() }
